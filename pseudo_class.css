@@ -1,0 +1,161 @@
+/* Base reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Rubik', sans-serif;
+    background: linear-gradient(to bottom right, #1e1f26, #2a2a38);
+    color: #f0f0f0;
+    padding: 2rem;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  
+  /* Header */
+  header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+  header h1 {
+    font-size: 2.8rem;
+    color: #ffffff;
+    animation: fadeIn 1s ease-in;
+  }
+  header p {
+    color: #bbbbbb;
+    font-size: 1rem;
+    animation: fadeIn 1.2s ease-in;
+  }
+  
+  /* Grid layout */
+  .mood-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  
+  /* Mood Cards */
+  .mood-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .mood-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  }
+  .mood-card:hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.05), transparent);
+    animation: shine 1.2s linear;
+  }
+  
+  /* Mood Tags */
+  .happy { border-left: 4px solid #4ade80; }
+  .meh   { border-left: 4px solid #facc15; }
+  .sad   { border-left: 4px solid #f87171; }
+  
+  /* Content */
+  .emoji {
+    font-size: 2.5rem;
+    position: absolute;
+    top: -20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.3rem 0.7rem;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+  }
+  .mood-card:hover .emoji {
+    transform: rotate(10deg) scale(1.1);
+  }
+  .mood-card h2 {
+    font-size: 1.1rem;
+    color: #aaa;
+  }
+  .mood-card h3 {
+    font-size: 1.4rem;
+    color: #fff;
+    margin-bottom: 0.8rem;
+  }
+  .mood-card p {
+    font-size: 1rem;
+    color: #ddd;
+  }
+  
+  /* Add Button */
+  .add-button {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: #4ade80;
+    color: #000;
+    border: none;
+    font-size: 2rem;
+    padding: 0.7rem 1.1rem;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  .add-button:hover {
+    background: #22c55e;
+    transform: scale(1.1);
+  }
+  
+  /* Animations */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-8px); }
+  }
+  
+  @keyframes float-delay {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-5px); }
+  }
+  
+  @keyframes slideIn {
+    from { transform: translateX(40px); opacity: 0; }
+    to   { transform: translateX(0); opacity: 1; }
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-8px); }
+  }
+  
+  @keyframes shine {
+    from { left: -50%; }
+    to   { left: 100%; }
+  }
+  
+  /* Animation classes */
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  .animate-float-delay {
+    animation: float-delay 3.5s ease-in-out infinite;
+  }
+  .animate-slide {
+    animation: slideIn 0.8s ease forwards;
+  }
+  .animate-bounce {
+    animation: bounce 2.5s ease-in-out infinite;
+  }
